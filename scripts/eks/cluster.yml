@@ -1,0 +1,73 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: <Provide environment name here>
+  region: <provide AWS Region here>
+
+vpc:
+  cidr: <provide CIDR Block here>
+    #autoAllocateIPv6: true
+  # disable public access to endpoint and only allow private access
+  # publicAccess: false
+  # privateAccess: true
+
+
+availabilityZones: ['AZ1', 'AZ2', 'AZ3' ]
+  #nodeGroups:
+  #- name: <provide name here>
+  #  instanceType: <provide instanceType here>
+  #  volumeSize: <provide volumeSize required>
+  #  minSize: <provide no of min instance required>
+  #  maxSize: <provide no of max instance required>
+  #  desiredCapacity: <provide no of desiredCapacity instance required>
+  #  privateNetworking: true
+  #  ssh:
+  #    allow: true
+  #    publicKeyName: eks-node
+  #      #    sourceSecurityGroupIds: ["<provide sg id here>"]
+  #  iam:
+  #    attachPolicyARNs:
+  #    - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+  #    - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+  #    - arn:aws:iam::aws:policy/AmazonS3FullAccess  #you can create policy specfic for bucket created
+  #    withAddonPolicies:
+  #      autoScaler: true
+  #  tags:
+  #    k8s.io/cluster-autoscaler/enabled: 'true'
+  #  availabilityZones: ['<provide AZ here>']
+  #
+  # managedNodeGroups:
+  #    - name: <provide name here>
+  #      instanceType: <provide instanceType required>
+  #      minSize: <provide no of min instance required>
+  #      maxSize: <provide no of max instance required>
+  #      desiredCapacity: <provide no of desiredCapacity instance required>
+  #      privateNetworking: true
+  #      volumeSize: <provide volumeSize required>
+  #      ssh:
+  #        allow: true
+  #        publicKeyName: <provide name here>
+  #          # new feature for restricting SSH access to certain AWS security group IDs
+  #        sourceSecurityGroupIds: ["<provide sg id here>"]
+  #      labels: {role: worker}
+  #      tags:
+  #        nodegroup-role: worker
+  #      iam:
+  #        attachPolicyARNs:
+  #        - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+  #        - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+  #        - arn:aws:iam::aws:policy/AmazonS3FullAccess  #you can create policy specfic for bucket created
+  #        withAddonPolicies:
+  #           externalDNS: true
+  #
+    #if we want to use custom pc use below configuration
+    #vpc:
+    #  id: "<vpc-id>" # This is the id of your project VPC in AWS.
+    #  subnets: # In this section, include all the subnets of your project AWS VPC. Follow the example format below.
+    #    private: # Private subnet details. Add an entry for each region of your project VPC.
+    #      <subnet-region1>: { id: <subnet-id> } # Change to be the subnet region and subnet id.
+    #      <subnet-region2>: { id: <subnet-id> } # Change to be the subnet region and subnet id.
+    #    public: # Public subnet details. Add an entry for each region of your project VPC.
+    #      <subnet-region1>: { id: <subnet-id> } # Change to be the subnet region and subnet id.
+    #      <subnet-region2>: { id: <subnet-id> } # Change to be the subnet region and subnet id.

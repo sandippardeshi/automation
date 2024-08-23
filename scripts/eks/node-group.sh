@@ -1,0 +1,16 @@
+eksctl create nodegroup --cluster=<provide cluster name here> \
+                        --region=<provide AWS Region here> \
+                        --name=<provide cluster name here>-ng-xlarge \
+                        --node-type=<provide instance type here> \
+                        --nodes-min=<provide no of min instance required> \
+                        --nodes-max=<provide no of min instance required> \
+                        --node-volume-size=<provide volumeSize required> \
+                        --ssh-access \
+                        --ssh-public-key=<provide public key name here> \
+                        --managed \
+                        --asg-access \
+                        --external-dns-access \
+                        --full-ecr-access \
+                        --appmesh-access \
+                        --alb-ingress-access \
+                        --node-private-networking
